@@ -1,0 +1,56 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int max1(int arr[],int n,int count)
+{
+    int index=0;
+    int temp=arr[0];
+    for(int i=1;i<n;i++)
+    {
+        if(temp<=arr[i] && count-1!=n){
+            index=i;
+            temp=arr[i];
+        }
+        else if (temp<arr[i]){
+            index=i;
+            temp=arr[i];
+        }
+        
+    }
+    return index;
+}
+int main()
+{
+    int n,count=1;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+        cin>>a[i];
+    while(true)
+    {
+        int index=max1(a,n,count);
+        for(int i=0;i<n;i++)
+        {
+            if(i!=index)
+            {   
+                a[i]++;
+            }
+        }
+          bool co=true;
+        for(int i=1;i<n;i++)
+        {
+            if(a[0]!=a[i])
+                co=false;
+        }
+        for(int i=0;i<n;i++)
+            cout<<a[i]<<" ";
+        cout<<"----"<<count<<endl;
+        if(co){
+            break;
+        }
+        else    
+            count++;
+    }
+   cout<<count;
+    return 0;
+}

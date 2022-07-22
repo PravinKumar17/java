@@ -1,0 +1,17 @@
+@Override
+    public void onCompleteTextEncoding(ImageSteganography result) {
+
+        //After the completion of text encoding.
+        
+        //result object is instantiated 
+        this.result = result;
+
+        if (result != null && result.isEncoded()){
+            
+            //encrypted image bitmap is extracted from result object
+            encoded_image = result.getEncrypted_image();
+            
+            //set text and image to the UI component.
+            textView.setText("Encoded");
+            imageView.setImageBitmap(encoded_image);
+    }

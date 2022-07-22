@@ -1,0 +1,31 @@
+@Override
+    public void onCompleteTextEncoding(ImageSteganography result) {
+
+        //After the completion of text encoding.
+        
+        //result object is instantiated 
+        this.result = result;
+
+        if (result != null){
+            
+            /* If result.isDecoded() is false, it means no Message was found in 					the image. */
+            if (!result.isDecoded())
+                textView.setText("No message found");
+            
+            else{
+                /* If result.isSecretKeyWrong() is true, it means that secret key provided 				is wrong. */ 
+                if (!result.isSecretKeyWrong()){
+                    //set the message to the UI component.
+                    textView.setText("Decoded");
+                    message.setText("" + result.getMessage());
+                }
+                else {
+                    textView.setText("Wrong secret key");
+                }
+            }
+        }
+        else {
+            //If result is null it means that bitmap is null
+            textView.setText("Select Image First");
+        }
+    }
